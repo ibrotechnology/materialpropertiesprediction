@@ -17,7 +17,7 @@ period=n_years*365
 if selected_tensile == "TENSILE STRENGTH":
         
     data_load_state = st.text("Load data...")
-    data=pd.read_csv('TENSILE_S_SOIL.csv')
+    data=pd.read_csv('TENSILE_S_SOIL.xlsx')
     data_load_state.text("Loading data...done!")
     
     
@@ -55,7 +55,7 @@ if selected_tensile == "TENSILE STRENGTH":
    # st.write(fig2)
 elif selected_tensile == "MODULUS OF ELASTICITY":
     data_load_state = st.text("Load data...")
-    data=pd.read_csv('TENSILE_M_SOIL.csv')
+    data=pd.read_csv('TENSILE_M_SOIL.xlsx')
     data_load_state.text("Loading data...done!")
     
     
@@ -93,7 +93,7 @@ elif selected_tensile == "MODULUS OF ELASTICITY":
    # st.write(fig2)
 elif selected_tensile == "FLEXURAL MODULUS":
     data_load_state = st.text("Load data...")
-    data=pd.read_csv('FLEXURAL_M_SOIL.csv')
+    data=pd.read_csv('FLEXURAL_M_SOIL.xlsx')
     data_load_state.text("Loading data...done!")
     
     
@@ -131,7 +131,7 @@ elif selected_tensile == "FLEXURAL MODULUS":
    # st.write(fig2)
 else:
     data_load_state = st.text("Load data...")
-    data=pd.read_csv('IMPACT_SOIL.csv')
+    data=pd.read_csv('IMPACT_SOIL.xlsx')
     data_load_state.text("Loading data...done!")
     
     
