@@ -19,7 +19,7 @@ period=n_years*365
 if selected_tensile == "TENSILE STRENGTH":
         
     data_load_state = st.text("Load data...")
-    data=pd.read_csv('TENSILE_S_SOIL.xlsx')
+    data=pd.read_csv('TENSILE_S_SOIL.csv')
     data_load_state.text("Loading data...done!")
     
     
