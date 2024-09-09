@@ -1,9 +1,11 @@
 import streamlit as st
+import numpy as np
 from datetime import date
 import pandas as pd
 from prophet import Prophet
 from prophet.plot import plot_plotly
 from plotly import graph_objs as go
+np.float_ = np.float64
 START = "2021-01-01"
 TODAY= date.today().strftime("%Y-%m-%d")
 st.title("Material Properties Prediction App by MAKINDE-ISOLA, BARAKA ABIODUN (MME/11/5292)")
