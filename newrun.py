@@ -8,7 +8,7 @@ from prophet.plot import plot_plotly
 from plotly import graph_objs as go
 START = "2021-01-01"
 TODAY= date.today().strftime("%Y-%m-%d")
-st.title("Material Properties Prediction App by MAKINDE-ISOLA, BARAKA ABIODUN (MME/11/5292)")
+st.title("Material Properties Prediction App (MPPA")
 tensile=("TENSILE STRENGTH","MODULUS OF ELASTICITY","FLEXURAL MODULUS","IMPACT STRENGTH")
 selected_tensile=st.selectbox("Select Property for prediction",tensile)
 n_years=st.slider("Years of predication:", 1, 12)
