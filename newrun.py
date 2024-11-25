@@ -9,7 +9,7 @@ from plotly import graph_objs as go
 START = "2021-01-01"
 TODAY= date.today().strftime("%Y-%m-%d")
 st.title("Material Properties Prediction (MPP) App")
-tensile=("TENSILE STRENGTH SOIL-9wt","TENSILE MODULUS ATM-control","TENSILE MODULUS ATM-15wt","IMPACT SOIL-9wt","MODULUS OF ELASTICITY-3wt","MODULUS OF ELASTICITY-18wt","FLEXURAL MODULUS SOIL-control","FLEXURAL MODULUS SOIL-9wt","FLEXURAL MODULUS SOIL-15wt","FLEXURAL MODULUS SOIL-18wt","IMPACT STRENGTH")
+tensile=("TENSILE STRENGTH SOIL-9wt","TENSILE MODULUS ATM-control","TENSILE MODULUS ATM-15wt","MODULUS OF ELASTICITY-3wt","MODULUS OF ELASTICITY-18wt","FLEXURAL MODULUS SOIL-control","FLEXURAL MODULUS SOIL-9wt","FLEXURAL MODULUS SOIL-15wt","FLEXURAL MODULUS SOIL-18wt","IMPACT STRENGTH")
 selected_tensile=st.selectbox("Select Property for prediction",tensile)
 n_years=st.slider("Years of predication:", 1, 12)
 period=n_years*365
@@ -246,7 +246,83 @@ elif selected_tensile == "MODULUS OF ELASTICITY-18wt":
       #st.write('forecast components')
     #fig2=m.plot_components(forecast)
    # st.write(fig2)
+elif selected_tensile == "FLEXURAL MODULUS SOIL-control":
+    data_load_state = st.text("Load data...")
+    data=pd.read_csv('FLEXURAL_M_SOIL.csv')
+    data_load_state.text("Loading data...done!")
+    
+    
+    st.subheader('Raw data')
+    st.write(data.tail())
+    
+    def plot_raw_data():
+    	fig=go.Figure()
+    	fig.add_trace(go.Scatter(x=data['timeseries'], y=data['fmsoilcontrol'], name='fmsoilcontrol'))
+    	fig.layout.update(title_text="Time Series Data",xaxis_rangeslider_visible=True)
+    	st.plotly_chart(fig)
+    plot_raw_data()
+    
+    
+    df_train=data[['timeseries','fmsoilcontrol']]
+    df_train=df_train.rename(columns={"timeseries":"ds", "fmsoilcontrol":"y"})
+    
+    m=Prophet()
+    m.fit(df_train)
+    
+    future = m.make_future_dataframe(periods=period)
+    
+    forecast = m.predict(future)
+    
+    
+    st.subheader('Forecast data')
+    st.write(forecast.tail())
+    
+    st.write('forecast data')
+    fig1 = plot_plotly(m, forecast)
+    st.plotly_chart(fig1)
+    
+    #st.write('forecast components')
+    #fig2=m.plot_components(forecast)
+   # st.write(fig2)
 elif selected_tensile == "FLEXURAL MODULUS SOIL-9wt":
+    data_load_state = st.text("Load data...")
+    data=pd.read_csv('FLEXURAL_M_SOIL.csv')
+    data_load_state.text("Loading data...done!")
+    
+    
+    st.subheader('Raw data')
+    st.write(data.tail())
+    
+    def plot_raw_data():
+    	fig=go.Figure()
+    	fig.add_trace(go.Scatter(x=data['timeseries'], y=data['fmsoil9wt'], name='fmsoil9wt'))
+    	fig.layout.update(title_text="Time Series Data",xaxis_rangeslider_visible=True)
+    	st.plotly_chart(fig)
+    plot_raw_data()
+    
+    
+    df_train=data[['timeseries','fmsoil9wt']]
+    df_train=df_train.rename(columns={"timeseries":"ds", "fmsoil9wt":"y"})
+    
+    m=Prophet()
+    m.fit(df_train)
+    
+    future = m.make_future_dataframe(periods=period)
+    
+    forecast = m.predict(future)
+    
+    
+    st.subheader('Forecast data')
+    st.write(forecast.tail())
+    
+    st.write('forecast data')
+    fig1 = plot_plotly(m, forecast)
+    st.plotly_chart(fig1)
+    
+    #st.write('forecast components')
+    #fig2=m.plot_components(forecast)
+   # st.write(fig2)
+elif selected_tensile == "FLEXURAL MODULUS SOIL-15wt":
     data_load_state = st.text("Load data...")
     data=pd.read_csv('FLEXURAL_M_SOIL.csv')
     data_load_state.text("Loading data...done!")
@@ -265,6 +341,44 @@ elif selected_tensile == "FLEXURAL MODULUS SOIL-9wt":
     
     df_train=data[['timeseries','fmsoil15wt']]
     df_train=df_train.rename(columns={"timeseries":"ds", "fmsoil15wt":"y"})
+    
+    m=Prophet()
+    m.fit(df_train)
+    
+    future = m.make_future_dataframe(periods=period)
+    
+    forecast = m.predict(future)
+    
+    
+    st.subheader('Forecast data')
+    st.write(forecast.tail())
+    
+    st.write('forecast data')
+    fig1 = plot_plotly(m, forecast)
+    st.plotly_chart(fig1)
+    
+    #st.write('forecast components')
+    #fig2=m.plot_components(forecast)
+   # st.write(fig2)
+elif selected_tensile == "FLEXURAL MODULUS SOIL-18wt":
+    data_load_state = st.text("Load data...")
+    data=pd.read_csv('FLEXURAL_M_SOIL.csv')
+    data_load_state.text("Loading data...done!")
+    
+    
+    st.subheader('Raw data')
+    st.write(data.tail())
+    
+    def plot_raw_data():
+    	fig=go.Figure()
+    	fig.add_trace(go.Scatter(x=data['timeseries'], y=data['fmsoil18wt'], name='fmsoil18wt'))
+    	fig.layout.update(title_text="Time Series Data",xaxis_rangeslider_visible=True)
+    	st.plotly_chart(fig)
+    plot_raw_data()
+    
+    
+    df_train=data[['timeseries','fmsoil18wt']]
+    df_train=df_train.rename(columns={"timeseries":"ds", "fmsoil18wt":"y"})
     
     m=Prophet()
     m.fit(df_train)
