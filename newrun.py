@@ -11,7 +11,7 @@ TODAY= date.today().strftime("%Y-%m-%d")
 st.title("Material Properties Prediction (MPP) App")
 tensile=("TENSILE STRENGTH SOIL-9wt","TENSILE MODULUS ATM-control","TENSILE MODULUS ATM-15wt","MODULUS OF ELASTICITY-3wt","MODULUS OF ELASTICITY-18wt","FLEXURAL MODULUS SOIL-control","FLEXURAL MODULUS SOIL-9wt","FLEXURAL MODULUS SOIL-15wt","FLEXURAL MODULUS SOIL-18wt","FLEXURAL MODULUS ATM-12wt","FLEXURAL MODULUS ATM-15wt","FLEXURAL MODULUS ATM-18wt","IMPACT STRENGTH")
 selected_tensile=st.selectbox("Select Property for prediction",tensile)
-n_years=st.slider("Years of predication:", 1, 12)
+n_years=st.slider("Years of predication:", 1, 20)
 period=n_years*365
 
 
@@ -100,8 +100,8 @@ elif selected_tensile == "TENSILE MODULUS ATM-15wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -214,8 +214,8 @@ elif selected_tensile == "MODULUS OF ELASTICITY-18wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -290,8 +290,8 @@ elif selected_tensile == "FLEXURAL MODULUS SOIL-9wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -328,8 +328,8 @@ elif selected_tensile == "FLEXURAL MODULUS SOIL-15wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -366,8 +366,8 @@ elif selected_tensile == "FLEXURAL MODULUS SOIL-18wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -444,8 +444,8 @@ elif selected_tensile == "FLEXURAL MODULUS ATM-15wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+   #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
@@ -482,8 +482,8 @@ elif selected_tensile == "FLEXURAL MODULUS ATM-18wt":
     data_load_state.text("Loading data...done!")
     
     
-    st.subheader('Raw data')
-    st.write(data.tail())
+    #st.subheader('Raw data')
+    #st.write(data.tail())
     
     def plot_raw_data():
     	fig=go.Figure()
